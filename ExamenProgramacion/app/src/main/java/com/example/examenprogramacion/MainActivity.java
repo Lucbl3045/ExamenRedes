@@ -9,7 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+/*
+1)
+Realizar un programa que tenga un activity con 2 input text, 2 text view y un boton. El 1er input corresponde a un usuario y el 2do a una contraseña y al hacer el click en el boton, se debe validar el usuario o la contraseña contra un elemento guardado en el codigo. Previamente se debe verificar que usuario y contraseña cumplan con las siguientes condicones:
+-El Usuario debe tener una mayuscula y no menos de 6 caracteres
+-La contraseña debe cumplir lo mismo pero con 8 caracteres.
+-En caso de coincidir debe de ir a un acitivity
+-En caso de no coincidir debe mostrar un texto rojo en un textview, el textview rojo debe permanecer oculto mientras no se haga el login que diga que quedan 3 intentos, disminuyendo por cada intento fallido.
+Cuando salte al activity de ingreso corecto, ese activity debe de tener 1 imagen, 2 input, 1 boton y 2 textview, al hacer click en el boton debe verificar si el contenido de los inputs es igual, si es asi debe mostrar una imagen y sino otra
+*/
 public class MainActivity extends AppCompatActivity {
     //Creating Elements
     private Button Login_check;
@@ -18,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText pwd;
 
     //setting password
-    private String saved_user = "Patoss";
-    private String saved_Password = "Cuacksss";
+    private String saved_user = "Patoss1";
+    private String saved_Password = "Cuacksss1";
     public Integer intentos = 3;
 
     @Override
@@ -70,14 +78,27 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             boolean pass = false;
+            boolean Num = false;
             for (char con: valuetocheck.toCharArray()) {
                 if (String.valueOf(con).equals(String.valueOf(con).toUpperCase()))
                 {
                     pass = true;
-                    break;
+                }
+                try {
+                    Integer.parseInt(String.valueOf(con));
+                    Num = true;
+                }
+                catch (Exception Error){
+
                 }
             }
-            return pass;
+            if (pass == true && Num == true){
+                return true;
+            }
+            else {
+                return false;
+            }
+
         }
     }
 

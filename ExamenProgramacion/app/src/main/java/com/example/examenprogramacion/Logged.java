@@ -51,14 +51,28 @@ public class Logged extends AppCompatActivity {
         }
         else {
             boolean pass = false;
+            boolean Num = false;
             for (char con: valuetocheck.toCharArray()) {
                 if (String.valueOf(con).equals(String.valueOf(con).toUpperCase()))
                 {
                     pass = true;
-                    break;
+
+                }
+                try {
+                    Integer.parseInt(String.valueOf(con));
+                    Num = true;
+                }
+                catch (Exception Error){
+
                 }
             }
-            return pass;
+            if (pass == true && Num == true){
+                return true;
+            }
+            else {
+                return false;
+            }
+
         }
     }
 
